@@ -37,7 +37,7 @@ export const getServerSideProps = withPageAuth({ redirectTo: '/signin' });
 export default function Account({ user }: { user: User }) {
   const [loading, setLoading] = useState(false);
   const { isLoading, subscription, userDetails } = useUser();
-  const [someData, setSomeData] = useState(undefined) as undefined | any[];
+  const [someData, setSomeData] = useState() as any[];
   const [isLoadingOpenAI, setIsLoadingOpenAI] = useState(false);
 
   const redirectToCustomerPortal = async () => {
