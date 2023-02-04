@@ -5,7 +5,7 @@ import { PlusCircleIcon } from '@heroicons/react/20/solid';
 
 export const getServerSideProps = withPageAuth({ redirectTo: '/signin' });
 
-const CreateMealPlanPage = ({ user }: { user: User }) => {
+const WorkOutDetailPage = ({ user }: { user: User }) => {
   console.log(user);
   const mealPlans = [
     { id: 12356234124, name: 'My first AI generated meal plan' },
@@ -14,10 +14,10 @@ const CreateMealPlanPage = ({ user }: { user: User }) => {
   return (
     <div className="flex flex-col">
       <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
-        Create A New Meal Plan
+        Work Out Detail
       </h1>
     </div>
   );
 };
 
-export default CreateMealPlanPage;
+export default WorkOutDetailPage;
