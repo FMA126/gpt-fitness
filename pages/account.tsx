@@ -53,6 +53,8 @@ export default function Account({ user }: { user: User }) {
     setLoading(false);
   };
 
+  console.log(userDetails);
+
   const subscriptionPrice =
     subscription &&
     new Intl.NumberFormat('en-US', {
