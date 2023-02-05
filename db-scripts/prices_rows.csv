@@ -1,0 +1,7 @@
+id,product_id,active,description,unit_amount,currency,type,interval,interval_count,trial_period_days,metadata
+price_1MUOrFHfhZMzOErwhksPkeIX,prod_NEsc6WOrCbH3TU,true,,0,usd,recurring,month,1,,{}
+price_1MUOruHfhZMzOErwm2QDU7Ju,prod_NEsdhVhlWE9rd0,true,,1999,usd,recurring,month,1,,{}
+price_1MUOrdHfhZMzOErwbg55TzOE,prod_NEscBRvszn0uiQ,true,,399,usd,recurring,month,1,,{}
+price_1MWuuqHfhZMzOErwi08z82vq,prod_NEsc6WOrCbH3TU,true,,0,usd,recurring,month,1,,{}
+price_1MXuD5HfhZMzOErw4SRQ1Qor,prod_NIVDctu4gxXRAH,true,,399,usd,recurring,month,1,,{}
+price_1MUlCSHfhZMzOErwL1SS7XWt,prod_NFFhOKkvDF2otm,true,,4999,usd,recurring,month,1,,{}

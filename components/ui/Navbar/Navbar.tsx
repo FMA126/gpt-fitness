@@ -29,7 +29,7 @@ const Navbar = () => {
                 <a className={s.link}>Pricing</a>
               </Link>
               <Link href="/account">
-                <a className={s.link}>Account</a>
+                <span>Account</span>
               </Link>
             </nav>
           </div>

@@ -34,8 +34,10 @@ export const MyUserContextProvider = (props: Props) => {
   const [isLoadingData, setIsloadingData] = useState(false);
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
+  const [dietItems, setDietItems] = useState<any>(null);
 
   const getUserDetails = () => supabase.from('users').select('*').single();
+  const getDietItems = () => supabase.from('diet_items').select('*');
   const getSubscription = () =>
     supabase
       .from('subscriptions')
@@ -46,20 +48,25 @@ export const MyUserContextProvider = (props: Props) => {
   useEffect(() => {
     if (user && !isLoadingData && !userDetails && !subscription) {
       setIsloadingData(true);
-      Promise.allSettled([getUserDetails(), getSubscription()]).then(
-        (results) => {
-          const userDetailsPromise = results[0];
-          const subscriptionPromise = results[1];
+      Promise.allSettled([
+        getUserDetails(),
+        getSubscription(),
+        getDietItems()
+      ]).then((results) => {
+        const userDetailsPromise = results[0];
+        const subscriptionPromise = results[1];
+        const dietItemsPromise = results[2];
 
-          if (userDetailsPromise.status === 'fulfilled')
-            setUserDetails(userDetailsPromise.value.data);
+        if (userDetailsPromise.status === 'fulfilled')
+          setUserDetails(userDetailsPromise.value.data);
 
-          if (subscriptionPromise.status === 'fulfilled')
-            setSubscription(subscriptionPromise.value.data);
+        if (subscriptionPromise.status === 'fulfilled')
+          setSubscription(subscriptionPromise.value.data);
 
-          setIsloadingData(false);
-        }
-      );
+        if (dietItemsPromise.status === 'fulfilled')
+          setDietItems(dietItemsPromise.value.data);
+        setIsloadingData(false);
+      });
     } else if (!user && !isLoadingUser && !isLoadingData) {
       setUserDetails(null);
       setSubscription(null);
@@ -71,7 +78,8 @@ export const MyUserContextProvider = (props: Props) => {
     user,
     userDetails,
     isLoading: isLoadingUser || isLoadingData,
-    subscription
+    subscription,
+    dietItems
   };
 
   return <UserContext.Provider value={value} {...props} />;

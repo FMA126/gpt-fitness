@@ -37,8 +37,6 @@ export const getServerSideProps = withPageAuth({ redirectTo: '/signin' });
 export default function Account({ user }: { user: User }) {
   const [loading, setLoading] = useState(false);
   const { isLoading, subscription, userDetails } = useUser();
-  const [someData, setSomeData] = useState() as any[];
-  const [isLoadingOpenAI, setIsLoadingOpenAI] = useState(false);
 
   const redirectToCustomerPortal = async () => {
     setLoading(true);
@@ -63,15 +61,6 @@ export default function Account({ user }: { user: User }) {
       minimumFractionDigits: 0
     }).format((subscription?.prices?.unit_amount || 0) / 100);
 
-  const handleModelTest = async () => {
-    setIsLoadingOpenAI(true);
-    const response = await axios.get(`${getURL()}api/openai`);
-    setSomeData(() => {
-      setIsLoadingOpenAI(false);
-      return response?.data?.data;
-    });
-  };
-
   return (
     <section className="bg-black mb-32">
       <div className="max-w-6xl mx-auto pt-8 sm:pt-24 pb-8 px-4 sm:px-6 lg:px-8">
@@ -84,20 +73,7 @@ export default function Account({ user }: { user: User }) {
           </p>
         </div>
       </div>
-      <button
-        disabled={isLoadingOpenAI}
-        className="bg-pink-500"
-        onClick={handleModelTest}
-      >
-        {isLoadingOpenAI && <span>...Loading</span>}
-        Test Model
-      </button>
-      {someData?.map((model: any, modelIdx: number) => (
-        <div className="flex justify-center space-x-2" key={modelIdx}>
-          <div>Model: {model?.id}</div>
-          <div>Owned by: {model?.owned_by}</div>
-        </div>
-      ))}
+
       <div className="p-4">
         <Card
           title="Your Plan"

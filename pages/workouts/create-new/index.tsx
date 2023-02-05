@@ -6,7 +6,6 @@ import { PlusCircleIcon } from '@heroicons/react/20/solid';
 export const getServerSideProps = withPageAuth({ redirectTo: '/signin' });
 
 const CreateWorkOutPage = ({ user }: { user: User }) => {
-  console.log(user);
   const mealPlans = [
     { id: 12356234124, name: 'My first AI generated meal plan' },
     { id: 12858713283, name: 'My second AI generated meal plan' }

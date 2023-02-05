@@ -11,7 +11,10 @@ export default withApiAuth(async function createGPT3Response(
       apiKey: process.env.OPENAI_API_KEY
     });
     const openai = new OpenAIApi(configuration);
-    const response = await openai.listModels();
+    const response = await openai.createCompletion({
+      model: 'text-davinci-002',
+      prompt: 'Tell me a joke'
+    });
     return res.status(201).send(response.data);
   } catch (err: any) {
     console.log(err);
