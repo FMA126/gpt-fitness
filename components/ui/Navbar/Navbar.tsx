@@ -26,10 +26,16 @@ const Navbar = () => {
             </Link>
             <nav className="space-x-2 ml-6 hidden lg:block">
               <Link href="/">
-                <a className={s.link}>Pricing</a>
+                <span className={s.link}>Pricing</span>
               </Link>
               <Link href="/account">
-                <span>Account</span>
+                <span className={s.link}>Account</span>
+              </Link>
+              <Link href="/meal-plans">
+                <span className={s.link}>Meal Plans</span>
+              </Link>
+              <Link href="/workouts">
+                <span className={s.link}>Workouts</span>
               </Link>
             </nav>
           </div>

@@ -13,6 +13,7 @@ type UserContextType = {
   userDetails: UserDetails | null;
   isLoading: boolean;
   subscription: Subscription | null;
+  dietItems: any | null;
 };
 
 export const UserContext = createContext<UserContextType | undefined>(
@@ -37,7 +38,11 @@ export const MyUserContextProvider = (props: Props) => {
   const [dietItems, setDietItems] = useState<any>(null);
 
   const getUserDetails = () => supabase.from('users').select('*').single();
-  const getDietItems = () => supabase.from('diet_items').select('*');
+  const getDietItems = () =>
+    supabase.from('diet_items').select(`
+  *,
+  diet_category(name)
+`);
   const getSubscription = () =>
     supabase
       .from('subscriptions')

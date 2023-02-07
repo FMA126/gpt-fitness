@@ -23,6 +23,104 @@ export interface Database {
           stripe_customer_id?: string | null
         }
       }
+      diet_category: {
+        Row: {
+          created_at: string | null
+          id: number
+          name: string | null
+          update_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          name?: string | null
+          update_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          name?: string | null
+          update_at?: string | null
+        }
+      }
+      diet_items: {
+        Row: {
+          created_at: string | null
+          diet_category_id: number
+          id: number
+          name: string | null
+          type: string | null
+          upated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          diet_category_id: number
+          id?: number
+          name?: string | null
+          type?: string | null
+          upated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          diet_category_id?: number
+          id?: number
+          name?: string | null
+          type?: string | null
+          upated_at?: string | null
+        }
+      }
+      meal_plan_preferences: {
+        Row: {
+          created_at: string | null
+          diet_items_id: number
+          id: number
+          meal_plans_id: number | null
+          updated_at: string | null
+          users_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          diet_items_id: number
+          id?: number
+          meal_plans_id?: number | null
+          updated_at?: string | null
+          users_id: string
+        }
+        Update: {
+          created_at?: string | null
+          diet_items_id?: number
+          id?: number
+          meal_plans_id?: number | null
+          updated_at?: string | null
+          users_id?: string
+        }
+      }
+      meal_plans: {
+        Row: {
+          created_at: string | null
+          gpt_response: string | null
+          id: number
+          subscription_id: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          gpt_response?: string | null
+          id?: number
+          subscription_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          gpt_response?: string | null
+          id?: number
+          subscription_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+      }
       prices: {
         Row: {
           active: boolean | null
